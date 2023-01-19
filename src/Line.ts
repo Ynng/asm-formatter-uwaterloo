@@ -23,8 +23,8 @@ export default class Line {
     constructor(line: TextLine) {
         this.range = line.range;
 
-        const [text, ...comment] = line.text.trim().split('#');
-        this.comment = comment.join('#').trim();
+        const [text, ...comment] = line.text.trim().split(';');
+        this.comment = comment.join(';').trim();
 
         // Set type
         if (!text) {
@@ -34,7 +34,7 @@ export default class Line {
         }
 
         // Comment
-        if (this.comment) this.comment = `# ${this.comment}`;
+        if (this.comment) this.comment = `; ${this.comment}`;
 
         // Assembler directive
         if (text.startsWith('.')) {
